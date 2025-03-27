@@ -1,4 +1,27 @@
 .footer {
-  background-color: rgb(39, 46, 54);
+  background-color: rgb(17, 20, 23);
   color: white;
+  padding: 1em;
+  padding-inline: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
