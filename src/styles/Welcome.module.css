@@ -1,0 +1,46 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 :first-child {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 2.5rem;
+}
+
+h1 :last-child {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.5rem;
+  width: 450px;
+  text-align: center;
+}
+
+button {
+  all: unset;
+  padding: 0.5em;
+  padding-inline: 3em;
+  font-size: 1.2rem;
+  background-color: rgb(34, 34, 34);
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 4px;
+  border: 2px solid rgb(27, 28, 30);
+}
+
+button:active {
+  background-color: rgb(49, 49, 49);
+}
