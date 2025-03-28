@@ -29,7 +29,7 @@ p {
   text-align: center;
 }
 
-button {
+.welcome button {
   all: unset;
   padding: 0.5em;
   padding-inline: 3em;
@@ -39,8 +39,9 @@ button {
   font-weight: bold;
   letter-spacing: 4px;
   border: 2px solid rgb(27, 28, 30);
+  border-radius: 0.2em;
 }
 
-button:active {
+.welcome button:active {
   background-color: rgb(49, 49, 49);
 }

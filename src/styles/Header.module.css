@@ -1,8 +1,38 @@
 .header {
   display: flex;
   background-color: rgb(29, 34, 40);
+  justify-content: space-between;
+  align-items: center;
   color: white;
   padding: 0.5em;
   padding-inline: 1.5em;
+}
+
+.header div {
+  display: flex;
   gap: 10px;
+}
+
+.header button {
+  padding: 0.2em;
+  padding-inline: 0.8rem;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-family: Helvetica;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.not-connected {
+  background-color: rgb(15, 18, 21);
+  background-color: rgb(247, 72, 67);
+}
+
+.not-connected:disabled {
+  cursor: not-allowed;
+}
+
+.connected {
+  background-color: rgb(247, 72, 67);
+  color: white;
 }

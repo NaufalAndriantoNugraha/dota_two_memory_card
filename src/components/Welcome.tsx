@@ -1,6 +1,10 @@
 import styles from '../styles/Welcome.module.css';
 
-export default function Welcome() {
+interface WelcomeProps {
+  onTap: () => void;
+}
+
+export default function Welcome({ onTap }: WelcomeProps) {
   return (
     <div className={styles.welcome}>
       <h1>
@@ -16,7 +20,9 @@ export default function Welcome() {
         Heroes!
       </p>
 
-      <button type="button">PLAY</button>
+      <button type="button" onClick={onTap}>
+        PLAY
+      </button>
     </div>
   );
 }
