@@ -1,0 +1,17 @@
+.card,
+.card img,
+.back {
+  border-radius: 0.5em;
+}
+
+.card {
+  border: 1px solid rgb(255, 96, 70);
+  cursor: pointer;
+}
+
+.back {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
