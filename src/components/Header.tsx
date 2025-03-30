@@ -1,13 +1,20 @@
+import Quit from './Quit';
 import styles from '../styles/Header.module.css';
 
 interface HeaderProps {
   isGameStart: boolean;
+  quitPopup: boolean;
   disconnectTheGame: () => void;
+  openQuitPopup: () => void;
+  closeQuitPopup: () => void;
 }
 
 export default function Header({
   isGameStart,
+  quitPopup,
   disconnectTheGame,
+  openQuitPopup: openQuitpopup,
+  closeQuitPopup: closeQuitpopup,
 }: HeaderProps) {
   return (
     <div className={styles.header}>
@@ -20,7 +27,7 @@ export default function Header({
           <button
             type="button"
             className={styles.connected}
-            onClick={disconnectTheGame}
+            onClick={openQuitpopup}
           >
             <span>Disconnect</span>
           </button>
@@ -30,6 +37,12 @@ export default function Header({
           </button>
         )}
       </menu>
+
+      <Quit
+        displaying={quitPopup}
+        disconnectTheGame={disconnectTheGame}
+        closePopup={closeQuitpopup}
+      />
     </div>
   );
 }
