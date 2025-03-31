@@ -7,6 +7,10 @@ import Card from './Card';
 export default function CardDeck() {
   const [heroes, setHeroes] = useState<Array<Hero>>([]);
   useEffect(() => {
+    const storedHeroes = sessionStorage.getItem('Heroes');
+    if (storedHeroes) {
+      setHeroes(JSON.parse(storedHeroes));
+    }
     async function getHeroes() {
       const res = await fetch('https://api.opendota.com/api/heroStats');
       const data = await res.json();
@@ -23,6 +27,7 @@ export default function CardDeck() {
         index = getRandomHeroes(length);
       }
       setHeroes(hero);
+      sessionStorage.setItem('Heroes', JSON.stringify(hero));
     }
     getHeroes();
   }, []);
