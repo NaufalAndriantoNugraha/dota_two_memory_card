@@ -4,9 +4,10 @@ import Tilt from 'react-parallax-tilt';
 interface CardProps {
   name: string;
   imgUrl: string;
+  onTap: () => void;
 }
 
-export default function Card({ name, imgUrl }: CardProps) {
+export default function Card({ name, imgUrl, onTap }: CardProps) {
   return (
     <Tilt
       tiltReverse={true}
@@ -16,7 +17,7 @@ export default function Card({ name, imgUrl }: CardProps) {
       className={styles.card}
     >
       <div>
-        <div>
+        <div className={styles.front} onClick={onTap}>
           <img src={imgUrl} alt={name} />
         </div>
         <div className={styles.back}>

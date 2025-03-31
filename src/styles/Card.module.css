@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.front img {
+  display: block;
+  width: 100%;
+}
+
 .back {
   background-color: black;
   display: flex;

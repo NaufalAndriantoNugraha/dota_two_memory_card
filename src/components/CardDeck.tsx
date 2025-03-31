@@ -6,6 +6,33 @@ import Card from './Card';
 
 export default function CardDeck() {
   const [heroes, setHeroes] = useState<Array<Hero>>([]);
+  const [score, setScore] = useState<number>(0);
+  const [bestScore, setBestScore] = useState<number>(0);
+  const [heroRemaining, setHeroRemaining] = useState<number>(0);
+
+  const incrementScore = () => {
+    if (heroRemaining < 6) {
+      setScore(score + 1);
+    }
+  };
+
+  useEffect(() => {
+    const incrementBestScore = () => {
+      setBestScore(bestScore + 1);
+    };
+    const incrementHeroRemaining = () => {
+      setHeroRemaining(heroRemaining + 1);
+    };
+    if (heroRemaining < 6) {
+      if (bestScore < score) {
+        incrementBestScore();
+        incrementHeroRemaining();
+      }
+    } else if (heroRemaining > 6) {
+      return;
+    }
+  }, [score, bestScore, heroRemaining]);
+
   useEffect(() => {
     const storedHeroes = sessionStorage.getItem('Heroes');
     if (storedHeroes) {
@@ -17,14 +44,13 @@ export default function CardDeck() {
       const length = data.length;
       const hero: Array<Hero> = [];
       for (let i = 0; i < 6; i++) {
-        let index = getRandomHeroes(length);
+        const index = getRandomHeroes(length);
         const newHero: Hero = {
           name: data[index]['localized_name'],
           id: data[index]['id'],
           image: `https://cdn.cloudflare.steamstatic.com${data[index]['img']}`,
         };
         hero.push(newHero);
-        index = getRandomHeroes(length);
       }
       setHeroes(hero);
       sessionStorage.setItem('Heroes', JSON.stringify(hero));
@@ -34,13 +60,20 @@ export default function CardDeck() {
   return (
     <div className={styles['card-deck']}>
       <div className={styles.score}>
-        <span>Score: 0</span>
-        <span>Best Score: 0</span>
-        <span>Hero remaining: 0/6</span>
+        <span>Score: {score}</span>
+        <span>Best Score: {bestScore}</span>
+        <span>Hero remaining: {heroRemaining}/6</span>
       </div>
       <div className={styles['card-section']}>
         {heroes.map((hero) => {
-          return <Card key={hero.id} name={hero.name} imgUrl={hero.image} />;
+          return (
+            <Card
+              key={hero.id}
+              name={hero.name}
+              imgUrl={hero.image}
+              onTap={incrementScore}
+            />
+          );
         })}
       </div>
     </div>
