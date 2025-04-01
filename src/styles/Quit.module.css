@@ -1,13 +1,28 @@
-.quit {
+.container {
   position: absolute;
   z-index: 1;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 40%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quit {
+  /* position: absolute;
+  z-index: 1; */
   width: 600px;
   height: 400px;
   background-color: rgb(21, 23, 30);
-  left: 0;
-  right: 0;
+  /* left: 0;
+  right: 0; */
   margin-inline: auto;
-  margin-top: 45%;
+  /* margin-top: 45%; */
   border: 3px solid rgb(28, 32, 49);
   border-radius: 0.2em;
   padding: 1.5em;
