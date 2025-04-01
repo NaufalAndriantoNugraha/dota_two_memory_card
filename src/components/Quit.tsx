@@ -1,10 +1,10 @@
 import styles from '../styles/Quit.module.css';
 
-interface QuitProps {
+type QuitProps = {
   displaying: boolean;
   disconnectTheGame: () => void;
   closePopup: () => void;
-}
+};
 
 export default function Quit({
   displaying,

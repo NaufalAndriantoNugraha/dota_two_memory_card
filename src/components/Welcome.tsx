@@ -1,8 +1,8 @@
 import styles from '../styles/Welcome.module.css';
 
-interface WelcomeProps {
+type WelcomeProps = {
   onTap: () => void;
-}
+};
 
 export default function Welcome({ onTap }: WelcomeProps) {
   return (

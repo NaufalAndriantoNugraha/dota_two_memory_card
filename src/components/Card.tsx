@@ -1,11 +1,11 @@
 import styles from '../styles/Card.module.css';
 import Tilt from 'react-parallax-tilt';
 
-interface CardProps {
+type CardProps = {
   name: string;
   imgUrl: string;
   onTap: () => void;
-}
+};
 
 export default function Card({ name, imgUrl, onTap }: CardProps) {
   return (

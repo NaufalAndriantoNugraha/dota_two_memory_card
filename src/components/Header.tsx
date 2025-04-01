@@ -1,13 +1,13 @@
 import Quit from './Quit';
 import styles from '../styles/Header.module.css';
 
-interface HeaderProps {
+type HeaderProps = {
   isGameStart: boolean;
   quitPopup: boolean;
   disconnectTheGame: () => void;
   openQuitPopup: () => void;
   closeQuitPopup: () => void;
-}
+};
 
 export default function Header({
   isGameStart,
