@@ -3,17 +3,44 @@ import { useEffect, useState } from 'react';
 import { Hero } from '../utils/Hero';
 import Card from './Card';
 import getRandomHeroesIndex from '../utils/getRandomHeroes';
+import Lose from './Lose';
 
-export default function CardDeck() {
+type CardDeckProps = {
+  displaying: boolean;
+  disconnectTheGame: () => void;
+  openGameEndDisplay: () => void;
+};
+
+export default function CardDeck({
+  displaying,
+  disconnectTheGame,
+  openGameEndDisplay,
+}: CardDeckProps) {
   const [heroes, setHeroes] = useState<Array<Hero>>([]);
   const [score, setScore] = useState<number>(0);
   const [bestScore, setBestScore] = useState<number>(0);
   const [heroRemaining, setHeroRemaining] = useState<number>(0);
+  const [selectedHeroIndex, setSelectedHeroIndex] = useState<Array<number>>([
+    0,
+  ]);
+
+  const onCardClick = (index: number) => {
+    const setVer = new Set(selectedHeroIndex);
+    if (setVer.has(index)) {
+      console.log('You already clicked the card!');
+      openGameEndDisplay();
+      return;
+    }
+    if (heroRemaining < 6) {
+      incrementScore();
+      const newIndexes: Array<number> = [];
+      newIndexes.push(index);
+      setSelectedHeroIndex([...selectedHeroIndex, ...newIndexes]);
+    }
+  };
 
   const incrementScore = () => {
-    if (heroRemaining < 6) {
-      setScore(score + 1);
-    }
+    setScore(score + 1);
   };
 
   useEffect(() => {
@@ -72,11 +99,17 @@ export default function CardDeck() {
               key={hero.id}
               name={hero.name}
               imgUrl={hero.image}
-              onTap={incrementScore}
+              onTap={() => onCardClick(hero.id)}
             />
           );
         })}
       </div>
+      <Lose
+        score={score}
+        bestScore={bestScore}
+        displaying={displaying}
+        quit={disconnectTheGame}
+      />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { clearSessionStorage } from './utils/ClearSessionStorage';
 export default function App() {
   const [isGameStart, setIsGameStart] = useState(false);
   const [quitPopup, setQuitPopup] = useState(false);
+  const [gameEndPopup, setGameEndPopup] = useState(false);
 
   window.addEventListener('beforeunload', () => {
     clearSessionStorage();
@@ -19,6 +20,7 @@ export default function App() {
 
   const disconnectTheGame = () => {
     setIsGameStart(false);
+    setGameEndPopup(false);
     closeQuitPopup();
     clearSessionStorage();
   };
@@ -31,6 +33,10 @@ export default function App() {
     setQuitPopup(false);
   };
 
+  const openGameEnd = () => {
+    setGameEndPopup(true);
+  };
+
   return (
     <div className={styles.app}>
       <Header
@@ -40,7 +46,13 @@ export default function App() {
         closeQuitPopup={closeQuitPopup}
         openQuitPopup={openQuitPopup}
       />
-      <Main isGameStart={isGameStart} startTheGame={startTheGame} />
+      <Main
+        isGameStart={isGameStart}
+        startTheGame={startTheGame}
+        displaying={gameEndPopup}
+        disconnectTheGame={disconnectTheGame}
+        openGameEndDisplay={openGameEnd}
+      />
       <Footer />
     </div>
   );
