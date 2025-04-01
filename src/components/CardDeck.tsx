@@ -1,8 +1,8 @@
 import styles from '../styles/CardDeck.module.css';
 import { useEffect, useState } from 'react';
 import { Hero } from '../utils/Hero';
-import getRandomHeroes from '../utils/getRandomHeroes';
 import Card from './Card';
+import getRandomHeroesIndex from '../utils/getRandomHeroes';
 
 export default function CardDeck() {
   const [heroes, setHeroes] = useState<Array<Hero>>([]);
@@ -38,20 +38,21 @@ export default function CardDeck() {
     if (storedHeroes) {
       setHeroes(JSON.parse(storedHeroes));
     }
+
     async function getHeroes() {
       const res = await fetch('https://api.opendota.com/api/heroStats');
       const data = await res.json();
       const length = data.length;
       const hero: Array<Hero> = [];
-      for (let i = 0; i < 6; i++) {
-        const index = getRandomHeroes(length);
+      const indexes: number[] = getRandomHeroesIndex(length, 6);
+      indexes.forEach((index) => {
         const newHero: Hero = {
           name: data[index]['localized_name'],
           id: data[index]['id'],
           image: `https://cdn.cloudflare.steamstatic.com${data[index]['img']}`,
         };
         hero.push(newHero);
-      }
+      });
       setHeroes(hero);
       sessionStorage.setItem('Heroes', JSON.stringify(hero));
     }
