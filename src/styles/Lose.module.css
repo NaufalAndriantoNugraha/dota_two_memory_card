@@ -1,12 +1,21 @@
-.lose {
-  background-color: rgb(21, 23, 30);
+.container {
   position: absolute;
   z-index: 1;
+  background-color: transparent;
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lose {
+  background-color: rgb(21, 23, 30);
   padding: 1em;
   text-align: center;
   border: 3px solid rgb(28, 32, 49);
   border-radius: 0.2em;
-  margin-top: 8%;
 }
 
 .displaying {

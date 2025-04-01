@@ -14,15 +14,10 @@
 }
 
 .quit {
-  /* position: absolute;
-  z-index: 1; */
   width: 600px;
   height: 400px;
   background-color: rgb(21, 23, 30);
-  /* left: 0;
-  right: 0; */
   margin-inline: auto;
-  /* margin-top: 45%; */
   border: 3px solid rgb(28, 32, 49);
   border-radius: 0.2em;
   padding: 1.5em;

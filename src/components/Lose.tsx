@@ -15,20 +15,22 @@ export default function Lose({
 }: LoseProps) {
   return (
     <div
-      className={`${styles.lose} ${
+      className={`${styles.container} ${
         displaying ? styles['displaying'] : styles['not-displaying']
       }`}
     >
-      <h1>LOSE</h1>
-      <div className={styles.stats}>
-        <p>Your final stats</p>
-        <p>Score: {score}</p>
-        <p>Best Score: {bestScore}</p>
-      </div>
-      <div className={styles.buttons}>
-        <button type="button" className={styles.button} onClick={quit}>
-          QUIT
-        </button>
+      <div className={`${styles.lose}`}>
+        <h1>LOSE</h1>
+        <div className={styles.stats}>
+          <p>Your final stats</p>
+          <p>Score: {score}</p>
+          <p>Best Score: {bestScore}</p>
+        </div>
+        <div className={styles.buttons}>
+          <button type="button" className={styles.button} onClick={quit}>
+            QUIT
+          </button>
+        </div>
       </div>
     </div>
   );
