@@ -16,7 +16,7 @@ export default function Card({ name, imgUrl, onTap }: CardProps) {
       glarePosition="all"
       className={styles.card}
     >
-      <div>
+      <div className={styles.inner}>
         <div className={styles.front} onClick={onTap}>
           <img src={imgUrl} alt={name} />
         </div>

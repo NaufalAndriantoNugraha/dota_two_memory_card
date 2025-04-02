@@ -2,7 +2,7 @@ import styles from '../styles/CardDeck.module.css';
 import { useEffect, useState } from 'react';
 import { Hero } from '../utils/Hero';
 import Card from './Card';
-import getRandomHeroesIndex from '../utils/getRandomHeroes';
+import getRandomHeroesIndex from '../utils/getRandomHeroesIndex';
 import GameEnd from './GameEnd';
 import { shuffleArray } from '../utils/arrays_helper';
 
