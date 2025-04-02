@@ -4,6 +4,7 @@ import { Hero } from '../utils/Hero';
 import Card from './Card';
 import getRandomHeroesIndex from '../utils/getRandomHeroes';
 import GameEnd from './GameEnd';
+import { shuffleArray } from '../utils/arrays_helper';
 
 type CardDeckProps = {
   displaying: boolean;
@@ -37,6 +38,7 @@ export default function CardDeck({
       incrementScore();
       const newIndexes: Array<number> = [];
       newIndexes.push(index);
+      setHeroes(shuffleArray(heroes));
       setSelectedHeroIndex([...selectedHeroIndex, ...newIndexes]);
     }
     if (score === 5) {

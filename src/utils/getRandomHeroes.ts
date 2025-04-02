@@ -1,4 +1,4 @@
-import { theresDuplicate } from './theresDuplicate';
+import { theresDuplicate } from './arrays_helper';
 
 export default function getRandomHeroesIndex(
   length: number,
