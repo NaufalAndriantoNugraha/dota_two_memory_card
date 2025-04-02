@@ -1,6 +1,7 @@
 import styles from '../styles/Lose.module.css';
 
 type LoseProps = {
+  title: string;
   score: number;
   bestScore: number;
   displaying: boolean;
@@ -8,6 +9,7 @@ type LoseProps = {
 };
 
 export default function Lose({
+  title,
   score,
   bestScore,
   displaying,
@@ -20,7 +22,7 @@ export default function Lose({
       }`}
     >
       <div className={`${styles.lose}`}>
-        <h1>LOSE</h1>
+        <h1>{title}</h1>
         <div className={styles.stats}>
           <p>Your final stats</p>
           <p>Score: {score}</p>

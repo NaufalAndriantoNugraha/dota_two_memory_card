@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Hero } from '../utils/Hero';
 import Card from './Card';
 import getRandomHeroesIndex from '../utils/getRandomHeroes';
-import Lose from './Lose';
+import GameEnd from './GameEnd';
 
 type CardDeckProps = {
   displaying: boolean;
@@ -23,11 +23,13 @@ export default function CardDeck({
   const [selectedHeroIndex, setSelectedHeroIndex] = useState<Array<number>>([
     0,
   ]);
+  const [isWin, setIsWin] = useState(false);
 
   const onCardClick = (index: number) => {
     const setVer = new Set(selectedHeroIndex);
     if (setVer.has(index)) {
       console.log('You already clicked the card!');
+      setIsWin(false);
       openGameEndDisplay();
       return;
     }
@@ -36,6 +38,11 @@ export default function CardDeck({
       const newIndexes: Array<number> = [];
       newIndexes.push(index);
       setSelectedHeroIndex([...selectedHeroIndex, ...newIndexes]);
+    }
+    if (score === 5) {
+      setIsWin(true);
+      openGameEndDisplay();
+      return;
     }
   };
 
@@ -104,7 +111,8 @@ export default function CardDeck({
           );
         })}
       </div>
-      <Lose
+      <GameEnd
+        title={isWin ? 'WIN' : 'LOSE'}
         score={score}
         bestScore={bestScore}
         displaying={displaying}
